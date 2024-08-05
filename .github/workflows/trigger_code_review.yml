@@ -1,0 +1,15 @@
+name: Trigger GPT Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  call_gpt_code_review:
+    uses: computacenter-ro/SOS-LLM/.github/workflows/main.yml@main
+    with:
+      base_branch: 'main'
+    secrets:
+      token: ${{ secrets.MY_GITHUB_TOKEN }}
+      secret_url: ${{ secrets.MY_SECRET_URL }}
