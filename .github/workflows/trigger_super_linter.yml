@@ -1,0 +1,13 @@
+name: Trigger Super-Linter
+
+on: push
+
+jobs:
+  call_superlinter:
+    uses: computacenter-ro/SOS-LLM/.github/workflows/superlinter.yml@main
+    with:
+      base_branch: 'main'
+      github_repository: ${{ github.repository }}
+    secrets:
+      token: ${{ secrets.MY_GITHUB_TOKEN }}
+      secret_url: ${{ secrets.MY_SECRET_URL }}
